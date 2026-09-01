@@ -85,6 +85,27 @@ font-weight:bold;
 margin-top:10px;
 }
 
+.answer-input{
+width:180px;
+height:80px;
+font-size:48px;
+text-align:center;
+border:4px solid #6ec6ff;
+border-radius:20px;
+margin:15px;
+}
+
+.result-text{
+font-size:32px;
+font-weight:bold;
+margin-top:15px;
+}
+
+.big-button{
+font-size:28px;
+padding:20px 30px;
+border-radius:20px;
+}
 
 </style>
 </head>
@@ -195,15 +216,22 @@ document.getElementById("game").innerHTML=
 
 <p>Ile to jest?</p>
 
-<input id="answer" type="number">
+<input
+id="answer"
+type="number"
+class="answer-input"
+inputmode="numeric">
+
 
 <br><br>
 
-<button onclick="checkMath()">
+<button class="big-button" onclick="checkMath()">
 ✅ Sprawdź
 </button>
 
-<div id="result"></div>
+
+<div id="result" class="result-text"></div>
+
 `;
 
 }
@@ -221,15 +249,22 @@ document.getElementById("game").innerHTML=
 
 <p>Ile zostanie?</p>
 
-<input id="answer" type="number">
+<input
+id="answer"
+type="number"
+class="answer-input"
+inputmode="numeric">
+
 
 <br><br>
 
-<button onclick="checkMath()">
+<button class="big-button" onclick="checkMath()">
 ✅ Sprawdź
 </button>
 
-<div id="result"></div>
+
+<div id="result" class="result-text"></div>
+
 `;
 
 }
