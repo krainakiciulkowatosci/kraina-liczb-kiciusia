@@ -3,28 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Kraina Liczb Kiciusia</title>
 
 <style>
 body{
-  font-family: Arial,sans-serif;
-  background:#f6f0ff;
-  text-align:center;
-  padding:30px;
+font-family:Arial,sans-serif;
+background:#f7f2ff;
+text-align:center;
+padding:20px;
 }
+
 h1{
-  color:#ff66aa;
+color:#ff69b4;
 }
-.button{
-  display:block;
-  margin:15px auto;
-  padding:20px;
-  width:280px;
-  border:none;
-  border-radius:20px;
-  background:#6cc6ff;
-  color:white;
-  font-size:22px;
+
+button{
+padding:15px;
+margin:8px;
+border:none;
+border-radius:20px;
+font-size:20px;
+background:#6ec6ff;
+color:white;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+margin:20px auto;
+max-width:500px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.big{
+font-size:50px;
+font-weight:bold;
 }
 </style>
 </head>
@@ -33,23 +48,100 @@ h1{
 
 <h1>🌈 Kraina Liczb Kiciusia</h1>
 
-<p>Wersja 0.1</p>
+<div class="card">
 
-<button class="button">
+<button onclick="addition()">
 🐱 Dodawanie do 10
 </button>
 
-<button class="button">
+<button onclick="subtraction()">
 🐈 Odejmowanie do 10
 </button>
 
-<button class="button">
+<button onclick="showNumber()">
 👧 Jaka to liczba?
 </button>
 
-<button class="button">
-👦 Większe czy Mniejsze?
+<button onclick="comparison()">
+👦 Większe / Mniejsze
 </button>
+
+</div>
+
+<div class="card">
+<div id="game">
+
+Wybierz grę
+
+</div>
+</div>
+
+<script>
+
+function addition(){
+
+let a=Math.floor(Math.random()*10)+1;
+let b=Math.floor(Math.random()*10)+1;
+
+document.getElementById("game").innerHTML=
+`
+<div class="big">${a} + ${b}</div>
+<p>Ile to jest?</p>
+`;
+
+}
+
+function subtraction(){
+
+let a=Math.floor(Math.random()*10)+1;
+let b=Math.floor(Math.random()*a);
+
+document.getElementById("game").innerHTML=
+`
+<div class="big">${a} - ${b}</div>
+<p>Ile zostanie?</p>
+`;
+
+}
+
+function showNumber(){
+
+let n=Math.floor(Math.random()*100)+1;
+
+document.getElementById("game").innerHTML=
+`
+<div class="big">${n}</div>
+<p>Powiedz na głos jaka to liczba</p>
+
+<button onclick="showNumber()">
+Następna liczba
+</button>
+`;
+
+}
+
+function comparison(){
+
+let a=Math.floor(Math.random()*10)+1;
+let b=Math.floor(Math.random()*10)+1;
+
+document.getElementById("game").innerHTML=
+`
+<div class="big">${a} ? ${b}</div>
+
+<p>
+Czy pierwsza liczba jest większa,
+mniejsza czy równa?
+</p>
+
+<button>></button>
+<button><</button>
+<button>=</button>
+`;
+
+}
+
+</script>
 
 </body>
 </html>
