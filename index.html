@@ -67,6 +67,13 @@ font-weight:bold;
 </button>
 
 </div>
+<div class="card">
+
+<h2 id="score">
+⭐ 0 | 🏆 Poziom 1
+</h2>
+
+</div>
 
 <div class="card">
 <div id="game">
@@ -78,15 +85,51 @@ Wybierz grę
 
 <script>
 
+let stars = 0;
+let level = 1;
+let correctAnswer = 0;
+
+function updateScore() {
+
+document.getElementById("score").innerHTML =
+`⭐ ${stars} | 🏆 Poziom ${level}`;
+
+}
+
+function reward() {
+
+stars++;
+
+if(stars % 10 === 0){
+level++;
+}
+
+updateScore();
+
+}
+
 function addition(){
 
 let a=Math.floor(Math.random()*10)+1;
 let b=Math.floor(Math.random()*10)+1;
 
+correctAnswer = a+b;
+
 document.getElementById("game").innerHTML=
 `
 <div class="big">${a} + ${b}</div>
+
 <p>Ile to jest?</p>
+
+<input id="answer" type="number">
+
+<br><br>
+
+<button onclick="checkMath()">
+✅ Sprawdź
+</button>
+
+<div id="result"></div>
 `;
 
 }
@@ -96,11 +139,45 @@ function subtraction(){
 let a=Math.floor(Math.random()*10)+1;
 let b=Math.floor(Math.random()*a);
 
+correctAnswer = a-b;
+
 document.getElementById("game").innerHTML=
 `
 <div class="big">${a} - ${b}</div>
+
 <p>Ile zostanie?</p>
+
+<input id="answer" type="number">
+
+<br><br>
+
+<button onclick="checkMath()">
+✅ Sprawdź
+</button>
+
+<div id="result"></div>
 `;
+
+}
+
+function checkMath(){
+
+let value =
+parseInt(document.getElementById("answer").value);
+
+if(value === correctAnswer){
+
+reward();
+
+document.getElementById("result").innerHTML =
+"🌟 Brawo!";
+
+}else{
+
+document.getElementById("result").innerHTML =
+"💡 Spróbuj jeszcze raz";
+
+}
 
 }
 
@@ -111,10 +188,11 @@ let n=Math.floor(Math.random()*100)+1;
 document.getElementById("game").innerHTML=
 `
 <div class="big">${n}</div>
+
 <p>Powiedz na głos jaka to liczba</p>
 
 <button onclick="showNumber()">
-Następna liczba
+➡️ Następna liczba
 </button>
 `;
 
@@ -125,21 +203,60 @@ function comparison(){
 let a=Math.floor(Math.random()*10)+1;
 let b=Math.floor(Math.random()*10)+1;
 
+let answer;
+
+if(a>b){
+answer=">";
+}else if(a<b){
+answer="<";
+}else{
+answer="=";
+}
+
+correctAnswer = answer;
+
 document.getElementById("game").innerHTML=
 `
 <div class="big">${a} ? ${b}</div>
 
-<p>
-Czy pierwsza liczba jest większa,
-mniejsza czy równa?
-</p>
+<p>Wybierz poprawny znak</p>
 
-<button>></button>
-<button><</button>
-<button>=</button>
+<button onclick="checkCompare('>')">
+>
+</button>
+
+<button onclick="checkCompare('<')">
+<
+</button>
+
+<button onclick="checkCompare('=')">
+=
+</button>
+
+<div id="result"></div>
 `;
 
 }
+
+function checkCompare(choice){
+
+if(choice===correctAnswer){
+
+reward();
+
+document.getElementById("result").innerHTML =
+"🌟 Świetnie!";
+
+}else{
+
+document.getElementById("result").innerHTML =
+"💡 Spróbuj jeszcze raz";
+
+}
+
+}
+
+updateScore();
 
 </script>
 
