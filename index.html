@@ -38,8 +38,9 @@ box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 .big{
-font-size:50px;
+font-size:60px;
 font-weight:bold;
+line-height:1.4;
 }
   .hero{
 background:white;
@@ -204,15 +205,45 @@ updateScore();
 }
 
 function addition(){
+let taskType = Math.floor(Math.random() * 3);
 
 let a=Math.floor(Math.random()*10)+1;
 let b=Math.floor(Math.random()*10)+1;
 
 correctAnswer = a+b;
+let question = "";
+
+if(taskType === 0){
+
+question =
+"🍎".repeat(a) +
+" + " +
+"🍎".repeat(b);
+
+}
+
+else if(taskType === 1){
+
+question =
+"🍎".repeat(a) +
+" (" + a + ")" +
+"<br> + <br>" +
+"🍎".repeat(b) +
+" (" + b + ")";
+
+}
+
+else{
+
+question =
+a + " + " + b;
+
+}
 
 document.getElementById("game").innerHTML=
 `
-<div class="big">${a} + ${b}</div>
+<div class="big">${question}</div>
+
 
 <p>Ile to jest?</p>
 
@@ -242,10 +273,41 @@ let a=Math.floor(Math.random()*10)+1;
 let b=Math.floor(Math.random()*a);
 
 correctAnswer = a-b;
+let taskType = Math.floor(Math.random() * 3);
+
+let question = "";
+
+if(taskType === 0){
+
+question =
+"🐟".repeat(a) +
+"<br> - <br>" +
+"🐟".repeat(b);
+
+}
+
+else if(taskType === 1){
+
+question =
+"🐟".repeat(a) +
+" (" + a + ")" +
+"<br> - <br>" +
+"🐟".repeat(b) +
+" (" + b + ")";
+
+}
+
+else{
+
+question =
+a + " - " + b;
+
+}
 
 document.getElementById("game").innerHTML=
 `
-<div class="big">${a} - ${b}</div>
+<div class="big">${question}</div>
+
 
 <p>Ile zostanie?</p>
 
@@ -308,6 +370,34 @@ document.getElementById("game").innerHTML=
 }
 
 function comparison(){
+let taskType = Math.floor(Math.random() * 3);
+
+let comparisonDisplay = "";
+if(taskType === 0){
+
+comparisonDisplay =
+"🍓".repeat(a) +
+"<br><br>VS<br><br>" +
+"🍓".repeat(b);
+
+}
+
+else if(taskType === 1){
+
+comparisonDisplay =
+"🍓".repeat(a) +
+" (" + a + ")" +
+"<br><br>VS<br><br>" +
+b;
+
+}
+
+else{
+
+comparisonDisplay =
+a + " ? " + b;
+
+}
 
 let a=Math.floor(Math.random()*10)+1;
 let b=Math.floor(Math.random()*10)+1;
@@ -326,7 +416,8 @@ correctAnswer = answer;
 
 document.getElementById("game").innerHTML=
 `
-<div class="big">${a} ? ${b}</div>
+<div class="big">${comparisonDisplay}</div>
+
 
 <p>Wybierz poprawny znak</p>
 
