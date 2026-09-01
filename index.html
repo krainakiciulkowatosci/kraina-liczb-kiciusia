@@ -370,46 +370,82 @@ document.getElementById("game").innerHTML=
 }
 
 function comparison(){
-let taskType = Math.floor(Math.random() * 3);
+
+let a = Math.floor(Math.random()*10)+1;
+let b = Math.floor(Math.random()*10)+1;
+
+let taskType = Math.floor(Math.random()*3);
+
+let answer = "";
+
+if(a > b){
+    answer = ">";
+}
+else if(a < b){
+    answer = "<";
+}
+else{
+    answer = "=";
+}
+
+correctAnswer = answer;
 
 let comparisonDisplay = "";
+
 if(taskType === 0){
 
-comparisonDisplay =
-"🍓".repeat(a) +
-"<br><br>VS<br><br>" +
-"🍓".repeat(b);
+    comparisonDisplay =
+    "🍓".repeat(a) +
+    "<br><br>VS<br><br>" +
+    "🍓".repeat(b);
 
 }
-
 else if(taskType === 1){
 
-comparisonDisplay =
-"🍓".repeat(a) +
-" (" + a + ")" +
-"<br><br>VS<br><br>" +
-b;
+    comparisonDisplay =
+    "🍓".repeat(a) +
+    " (" + a + ")" +
+    "<br><br>VS<br><br>" +
+    b;
 
 }
-
 else{
 
-comparisonDisplay =
-a + " ? " + b;
+    comparisonDisplay =
+    a + " ? " + b;
 
 }
 
-let a=Math.floor(Math.random()*10)+1;
-let b=Math.floor(Math.random()*10)+1;
+document.getElementById("game").innerHTML =
+`
+<div class="big">
+${comparisonDisplay}
+</div>
 
-let answer;
+<p>
+Wybierz poprawny znak
+</p>
 
-if(a>b){
-answer=">";
-}else if(a<b){
-answer="<";
-}else{
-answer="=";
+<button class="big-button"
+onclick="checkCompare('>')">
+>
+</button>
+
+<button class="big-button"
+onclick="checkCompare('<')">
+<
+</button>
+
+<button class="big-button"
+onclick="checkCompare('=')">
+=
+</button>
+
+<div id="result"
+class="result-text">
+</div>
+`;
+
 }
 
 correctAnswer = answer;
