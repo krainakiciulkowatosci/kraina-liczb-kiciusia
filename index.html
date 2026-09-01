@@ -54,6 +54,37 @@ box-shadow:0 3px 10px rgba(0,0,0,0.1);
 font-size:80px;
 margin-bottom:10px;
 }
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+max-width:800px;
+margin:auto;
+}
+
+.menu-card{
+background:white;
+border-radius:20px;
+padding:20px;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+transition:0.2s;
+}
+
+.menu-card:hover{
+transform:scale(1.03);
+}
+
+.menu-emoji{
+font-size:60px;
+}
+
+.menu-title{
+font-size:22px;
+font-weight:bold;
+margin-top:10px;
+}
+
 
 </style>
 </head>
@@ -77,26 +108,33 @@ Cześć! Pomogę Ci nauczyć się liczyć!
 </div>
 
 
-<div class="card">
+<div class="menu-grid">
 
-<button onclick="addition()">
-🐱 Dodawanie do 10
-</button>
+<div class="menu-card" onclick="addition()">
+<div class="menu-emoji">🐱</div>
+<div class="menu-title">Dodawanie</div>
+<p>Kiciuś</p>
+</div>
 
-<button onclick="subtraction()">
-🐈 Odejmowanie do 10
-</button>
+<div class="menu-card" onclick="subtraction()">
+<div class="menu-emoji">🐈</div>
+<div class="menu-title">Odejmowanie</div>
+<p>Paróweczka</p>
+</div>
 
-<button onclick="showNumber()">
-👧 Jaka to liczba?
-</button>
+<div class="menu-card" onclick="showNumber()">
+<div class="menu-emoji">👧</div>
+<div class="menu-title">Jaka to liczba?</div>
+<p>Helenka</p>
+</div>
 
-<button onclick="comparison()">
-👦 Większe / Mniejsze
-</button>
+<div class="menu-card" onclick="comparison()">
+<div class="menu-emoji">👦</div>
+<div class="menu-title">Większe / Mniejsze</div>
+<p>Oskarek</p>
+</div>
 
 </div>
-<div class="card">
 
 <h2 id="score">
 ⭐ 0 | 🏆 Poziom 1
