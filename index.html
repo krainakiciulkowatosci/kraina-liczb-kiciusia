@@ -85,8 +85,12 @@ Wybierz grę
 
 <script>
 
-let stars = 0;
-let level = 1;
+let stars =
+parseInt(localStorage.getItem("stars") || "0");
+
+let level =
+parseInt(localStorage.getItem("level") || "1");
+
 let correctAnswer = 0;
 
 function updateScore() {
@@ -103,6 +107,9 @@ stars++;
 if(stars % 10 === 0){
 level++;
 }
+localStorage.setItem("stars", stars);
+
+localStorage.setItem("level", level);
 
 updateScore();
 
